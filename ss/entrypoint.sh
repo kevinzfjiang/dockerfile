@@ -5,9 +5,12 @@ SS_MODULE=${SS_MODULE:-"ss-server"}
 KCP_CONFIG=${KCP_CONFIG:-""}
 KCP_MODULE=${KCP_MODULE:-"kcpserver"}
 KCP_FLAG=${KCP_FLAG:-"false"}
+UDP2RAW_CONFIG=${UDP2RAW_CONFIG:-""}
+UDP2RAW_MODULE=${UDP2RAW_MODULE:-"udp2raw_amd64"}
+UDP2RAW_FLAG=${UDP2RAW_FLAG:-"false"}
 RNGD_FLAG=${RNGD_FLAG:-"false"}
 
-while getopts "s:m:k:e:xr" OPT; do
+while getopts "s:m:k:e:v:w:xru" OPT; do
     case $OPT in
         s)
             SS_CONFIG=$OPTARG;;
@@ -17,10 +20,16 @@ while getopts "s:m:k:e:xr" OPT; do
             KCP_CONFIG=$OPTARG;;
         e)
             KCP_MODULE=$OPTARG;;
+        v)
+            UDP2RAW_CONFIG=$OPTARG;;
+        w)
+            UDP2RAW_MODULE=$OPTARG;;
         x)
             KCP_FLAG="true";;
         r)
             RNGD_FLAG="true";;
+        u)
+            UDP2RAW_FLAG="true";;
     esac
 done
 
@@ -34,6 +43,13 @@ if [ "${KCP_FLAG}" == "true" ] && [ "${KCP_CONFIG}" != "" ]; then
     ${KCP_MODULE} ${KCP_CONFIG} 2>&1 &
 else
     echo -e "\033[33mKcptun not started......\033[0m"
+fi
+
+if [ "${UDP2RAW_FLAG}" == "true" ] && [ "${UDP2RAW_CONFIG}" != "" ]; then
+    echo -e "\033[32mStarting udp2raw......\033[0m"
+    ${UDP2RAW_MODULE} ${UDP2RAW_CONFIG} 2>&1 &
+else
+    echo -e "\033[33mUDP2RAW not started......\033[0m"
 fi
 
 if [ "${SS_CONFIG}" != "" ]; then
