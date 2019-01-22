@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-LABEL maintainer="Kevin <me@kevinjiang.design>"
+LABEL maintainer="mritd <mritd1234@gmail.com>"
 
 ARG TZ='Asia/Shanghai'
 
