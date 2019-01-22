@@ -71,4 +71,4 @@ RUN apk upgrade \
 
 ADD entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh","/entrypoint.sh"]
