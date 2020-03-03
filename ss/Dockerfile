@@ -1,12 +1,12 @@
 FROM alpine:3.8
 
-LABEL maintainer="mritd <mritd1234@gmail.com>"
+LABEL maintainer="yadiman <yadiman@gmail.com>"
 
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SS_LIBEV_VERSION 3.3.1
-ENV KCP_VERSION 20190924
+ENV SS_LIBEV_VERSION 3.3.4
+ENV KCP_VERSION 20200226
 ENV UDP2RAW_VERSION 20181113.0
 ENV SS_DOWNLOAD_URL https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${SS_LIBEV_VERSION}/shadowsocks-libev-${SS_LIBEV_VERSION}.tar.gz
 ENV OBFS_DOWNLOAD_URL https://github.com/shadowsocks/simple-obfs.git
