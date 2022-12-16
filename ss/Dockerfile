@@ -5,13 +5,13 @@ LABEL maintainer="yadiman <yadiman@gmail.com>"
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SS_LIBEV_VERSION 3.3.4
-ENV KCP_VERSION 20200226
-ENV UDP2RAW_VERSION 20181113.0
+ENV SS_LIBEV_VERSION 3.3.5
+ENV KCP_VERSION 20221015
+ENV UDP2RAW_VERSION 20200818.0
 ENV SS_DOWNLOAD_URL https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${SS_LIBEV_VERSION}/shadowsocks-libev-${SS_LIBEV_VERSION}.tar.gz
 ENV OBFS_DOWNLOAD_URL https://github.com/shadowsocks/simple-obfs.git
 ENV KCP_DOWNLOAD_URL https://github.com/xtaci/kcptun/releases/download/v${KCP_VERSION}/kcptun-linux-amd64-${KCP_VERSION}.tar.gz
-ENV UDP2RAW_DOWNLOAD_URL https://github.com/wangyu-/udp2raw-tunnel/releases/download/${UDP2RAW_VERSION}/udp2raw_binaries.tar.gz
+ENV UDP2RAW_DOWNLOAD_URL https://github.com/wangyu-/udp2raw/releases/download/${UDP2RAW_VERSION}/udp2raw_binaries.tar.gz
 
 RUN apk upgrade \
     && apk add bash tzdata libsodium rng-tools \
