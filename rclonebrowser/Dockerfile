@@ -16,6 +16,7 @@ WORKDIR /tmp
 # Install Rclone Browser dependencies
 
 RUN apk --no-cache add \
+      curl \
       ca-certificates \
       fuse \
       wget \
