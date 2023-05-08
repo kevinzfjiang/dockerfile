@@ -14,8 +14,8 @@ ENV ARCH=amd64
 WORKDIR /tmp
 
 # Install Rclone Browser dependencies
-
-RUN apk --no-cache add \
+RUN apk -U upgrade --no-cache && \
+    apk --no-cache add \
       curl \
       ca-certificates \
       fuse \
@@ -26,6 +26,7 @@ RUN apk --no-cache add \
       libgcc \
       dbus \
       xterm \
+    && add-pkg font-wqy-zenhei --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && cd /tmp \
     && wget -q http://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && unzip /tmp/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
@@ -81,4 +82,4 @@ LABEL \
       org.label-schema.description="Docker container for RcloneBrowser" \
       org.label-schema.version="unknown" \
       org.label-schema.vcs-url="https://github.com/kevinzfjiang/dockerfile/tree/master/rclonebrowser" \
-      org.label-schema.schema-version="4.0.2"
+      org.label-schema.schema-version="1.0"
