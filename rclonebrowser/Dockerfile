@@ -81,4 +81,4 @@ LABEL \
       org.label-schema.description="Docker container for RcloneBrowser" \
       org.label-schema.version="unknown" \
       org.label-schema.vcs-url="https://github.com/kevinzfjiang/dockerfile/tree/master/rclonebrowser" \
-      org.label-schema.schema-version="1.0"
+      org.label-schema.schema-version="4.0.2"
