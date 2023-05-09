@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:alpine-3.12-glibc
+FROM jlesage/baseimage-gui:alpine-3.15-glibc
 
 # Define build arguments
 ARG RCLONE_VERSION=current
@@ -45,7 +45,7 @@ RUN apk -U upgrade --no-cache && \
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
     mkdir /tmp/build && \
     cd /tmp/build && \
-    cmake .. && \
+    cmake -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" .. && \
     cmake --build . && \
     ls -l /tmp/build && \
     cp /tmp/build/build/rclone-browser /usr/bin  && \
