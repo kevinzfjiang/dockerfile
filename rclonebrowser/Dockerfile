@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:alpine-3.15-glibc
+FROM jlesage/baseimage-gui:alpine-3.18-v4.4.2
 
 # Define build arguments
 ARG RCLONE_VERSION=current
@@ -26,6 +26,9 @@ RUN apk -U upgrade --no-cache && \
       libgcc \
       dbus \
       xterm \
+      openbox \
+      font-terminus \
+    && install-glibc \
     && add-pkg font-wqy-zenhei --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && cd /tmp \
     && wget -q http://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
@@ -55,9 +58,9 @@ RUN apk -U upgrade --no-cache && \
     rm -rf /tmp/*
 
 # Maximize only the main/initial window.
-RUN \
-    sed-patch 's/<application type="normal">/<application type="normal" title="Rclone Browser">/' \
-        /etc/xdg/openbox/rc.xml
+#RUN \
+#    sed-patch 's/<application type="normal">/<application type="normal" title="Rclone Browser">/' \
+#        /etc/xdg/openbox/rc.xml
 
 # Generate and install favicons.
 RUN \
@@ -65,9 +68,8 @@ RUN \
     install_app_icon.sh "$APP_ICON_URL"
 
 # Add files.
-COPY rootfs/ /
+COPY --chmod=755 rootfs/ /
 COPY VERSION /
-
 # Set environment variables.
 ENV APP_NAME="RcloneBrowser" \
     S6_KILL_GRACETIME=8000
