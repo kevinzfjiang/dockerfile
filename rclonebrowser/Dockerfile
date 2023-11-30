@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:alpine-3.18-v4.4.2
+FROM jlesage/baseimage-gui:alpine-3.18-v4.5.2
 
 # Define build arguments
 ARG RCLONE_VERSION=current
@@ -29,7 +29,7 @@ RUN apk -U upgrade --no-cache && \
       openbox \
       font-terminus \
     && install-glibc \
-    && add-pkg font-wqy-zenhei --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    && add-pkg font-wqy-zenhei --repository https://dl-cdn.alpinelinux.org/alpine/edge/community \
     && cd /tmp \
     && wget -q http://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && unzip /tmp/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
