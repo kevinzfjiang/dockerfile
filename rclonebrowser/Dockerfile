@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:alpine-3.18-v4.5.2
+FROM jlesage/baseimage-gui:alpine-3.19-v4.5.3
 
 # Define build arguments
 ARG RCLONE_VERSION=current
